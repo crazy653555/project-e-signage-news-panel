@@ -2,8 +2,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RssService } from './rss.service';
 import { News } from './news';
 
-// TODO: 排版、完善屬性
-
 @Component({
   selector: 'app-news',
   templateUrl: './news.component.html',
@@ -45,12 +43,16 @@ export class NewsComponent implements OnInit {
         this.feeds = [];
         const channel_name = data['feed'].title;
         data['items'].forEach(i => {
+          // 取得圖片
+          let thumb = i.thumbnail === '' ? (i.enclosure.link === undefined ? '' : i.enclosure.link) : i.thumbnail;
+          thumb = thumb.match(/\.(jpeg|jpg|gif|png|webp)/i) == null ? '' : thumb;
+          // 放置內容
           const n: News = {
             id: i.id,
             title: i.title,
             description: i.description,
             link: i.link,
-            thumbnail: i.thumbnail,
+            thumbnail: thumb,
             pubDate: i.pubDate,
             channel: channel_name,
           };
