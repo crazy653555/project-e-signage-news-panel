@@ -1,3 +1,8 @@
-<p>
-  news works!
-</p>
+<input type="button" value="10秒換一則，等不及的話請按此(測試用)" (click)="nextNews()">
+<div [class.fadeIn]="doFadeIn" [class.fadeOut]="doFadeOut">
+  <h2>{{show.title}}</h2>
+  <p [innerHTML]="show.description | newsContent"></p>
+  <img width='100%' height="auto" [src]="show.thumbnail" />
+  <p [innerHTML]="show.channel"></p>
+  <p [innerHTML]="show.link"></p>
+</div>
