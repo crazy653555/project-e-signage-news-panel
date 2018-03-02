@@ -4,7 +4,8 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class RssService {
 
-  private proxy = 'https://rss2json.com/api.json?rss_url=';
+  private rssProxy = 'https://rss2json.com/api.json?rss_url=';
+  private corsProxy = 'https://cors-anywhere.herokuapp.com/';
   private sources = [
     'https://dq.yam.com/rss.php', // 地球圖輯隊
     'https://newtalk.tw/rss/all/', // 新頭殻
@@ -29,9 +30,15 @@ export class RssService {
   getFeeds() {
     const pickOne = Math.floor(Math.random() * (this.sources.length - 1));
     console.log(this.sources[pickOne]);
-    return this.http.get<any[]>(this.proxy + this.sources[pickOne]);
+    return this.http.get<any[]>(this.rssProxy + this.sources[pickOne]);
   }
 
-
+  // parserr() {
+  //   const pickOne = Math.floor(Math.random() * (this.sources.length - 1));
+  //   console.log(this.sources[pickOne]);
+  //   return this.http.get(this.corsProxy + this.sources[pickOne], { responseType: 'text' }).subscribe(dd => {
+  //     console.log(dd);
+  //   });
+  // }
 
 }
