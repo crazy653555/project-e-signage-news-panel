@@ -10,6 +10,11 @@ export class ClockComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    const clock = $('.your-clock').FlipClock({
+      clockFace: 'TwentyFourHourClock'
+    });
+
+
   }
 
 }
