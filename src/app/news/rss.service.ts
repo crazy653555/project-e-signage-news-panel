@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { News } from './news';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class RssService {
 
   private rssProxy = 'https://rss2json.com/api.json?rss_url=';
   private corsProxy = 'https://cors-anywhere.herokuapp.com/';
+  private NewsAPI = 'https://newsapi.org/v2/top-headlines?country=tw&apiKey=5b94ea4ffc1343959a58ab813a842712';
   private sources = [
     'https://dq.yam.com/rss.php', // 地球圖輯隊
     'https://newtalk.tw/rss/all/', // 新頭殻
@@ -25,20 +28,30 @@ export class RssService {
     // 'https://tw.appledaily.com/rss/newcreate/kind/sec/type/1077', // 蘋果日報 (雜圖太多)
   ];
 
+  private default: News = {
+    id: 0,
+    title: '新聞串流中',
+    description: '',
+    link: '',
+    thumbnail: '',
+    pubDate: '',
+    channel: '',
+  };
+
   constructor(private http: HttpClient) { }
 
-  getFeeds() {
+  getDefault() {
+    return this.default;
+  }
+
+  getRSS2JSON() {
     const pickOne = Math.floor(Math.random() * (this.sources.length - 1));
     console.log(this.sources[pickOne]);
     return this.http.get<any[]>(this.rssProxy + this.sources[pickOne]);
   }
 
-  // parserr() {
-  //   const pickOne = Math.floor(Math.random() * (this.sources.length - 1));
-  //   console.log(this.sources[pickOne]);
-  //   return this.http.get(this.corsProxy + this.sources[pickOne], { responseType: 'text' }).subscribe(dd => {
-  //     console.log(dd);
-  //   });
-  // }
+  getNewsAPI() {
+    return this.http.get<any[]>(this.NewsAPI);
+  }
 
 }
