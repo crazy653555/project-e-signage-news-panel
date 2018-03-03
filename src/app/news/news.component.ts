@@ -27,8 +27,8 @@ export class NewsComponent implements OnInit {
 
   // 取得資訊
   getNews() {
-    // this.RSS();
-    this.NewsAPI();
+    this.RSS();
+    // this.NewsAPI();
   }
 
   // 切換新聞

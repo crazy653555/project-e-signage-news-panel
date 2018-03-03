@@ -1,31 +1,81 @@
-div {
-    color: white;
-    background: brown;
+/* 連結無底線 */
+
+a {
+  text-decoration: none;
 }
 
+/* 版塊 */
+
+.news {
+  /* 高度及字彩 */
+  height: 30vh;
+  min-height: 180px;
+  color: white;
+  /* 底圖排版 */
+  background-size: cover;
+  background-position: center;
+  /* 無圖底色 */
+  background: #000428;
+  background: -webkit-linear-gradient(to right, #004e92, #000428);
+  background: linear-gradient(to right, #004e92, #000428);
+  /* 標題置底的前置作業 */
+  position: relative;
+}
+
+/* 標題 */
+
+.title {
+  /* 玻璃紙及字體 */
+  background: black;
+  opacity: .7;
+  font-size: 1.5rem;
+  font-family: sans-serif;
+  padding: 0.5rem;  
+  /* 置底 */
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+/* 頻道 */
+
+.channel {
+  text-align: right;
+  opacity: .7;
+}
+
+.channel>span {
+  background: darkred;
+  padding: 0 1rem;
+}
+
+/* 出入場特效 */
+
 .fadeIn {
-    opacity:0;
-    animation:fade_in 1s ease-in-out;
-    animation-fill-mode: forwards;
+  opacity: 0;
+  animation: fade_in 1s ease-in-out;
+  animation-fill-mode: forwards;
 }
-    @keyframes fade_in {
-    0% {
-        opacity:0;
-    }
-    100% {
-        opacity:1;
-    }
-    }
-  
+
+@keyframes fade_in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .fadeOut {
-    animation:fade_out 1s ease-in-out;
-    animation-fill-mode: forwards;
+  animation: fade_out 1s ease-in-out;
+  animation-fill-mode: forwards;
 }
-    @keyframes fade_out {
-        0% {
-        opacity:1;
-        }
-        100% {
-        opacity:0;
-        }
-    }
+
+@keyframes fade_out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

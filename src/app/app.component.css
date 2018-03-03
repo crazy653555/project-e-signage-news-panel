@@ -1,0 +1,19 @@
+/* 置底的前置作業 */
+
+main {
+  position: relative;
+  height: 100%;
+
+  background: #F0F2F0;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #000C40, #F0F2F0);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #000C40, #F0F2F0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+}
+
+/* 置底，高度由內容決定 */
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
