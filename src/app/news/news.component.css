@@ -8,8 +8,9 @@ a {
 
 .news {
   /* 高度及字彩 */
-  height: 30vh;
-  min-height: 180px;
+  /* HACK: 因為需顯示圖片，高度不建議低於 180px */
+  height: 25vh;
+  min-height: 150px;
   color: white;
   /* 底圖排版 */
   background-color: #232526;
@@ -28,11 +29,13 @@ a {
   opacity: .7;
   font-size: 1.5rem;
   font-family: sans-serif;
-  padding: 0.5rem;
   /* 置底 */
   position: absolute;
   bottom: 0;
   width: 100%;
+}
+.title>span {
+  margin: 0.5rem;
 }
 
 /* 頻道 */

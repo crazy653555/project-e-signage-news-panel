@@ -3,11 +3,11 @@
   <div class="news" [class.fadeIn]="doFadeIn" [class.fadeOut]="doFadeOut" [style.background-image]="'url(' + show.thumbnail + ')'">
 
     <div class="channel" *ngIf="show.channel !== ''">
-      <span class="channel_name">{{show.channel}}</span>
+      <span>{{show.channel}}</span>
     </div>
 
     <div class="title">
-      <div class="title_content"> {{show.title}}</div>
+      <span> {{show.title}}</span>
     </div>
     
   </div>

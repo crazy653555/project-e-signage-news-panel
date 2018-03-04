@@ -11,7 +11,7 @@ import { CityComponent } from './weather/city/city.component';
 import { NewsComponent } from './news/news.component';
 import { RssService } from './news/rss.service';
 import { NewsContentPipe } from './news/news-content.pipe';
-
+import { WeatherService } from './weather/weather.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,10 @@ import { NewsContentPipe } from './news/news-content.pipe';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [RssService],
+  providers: [
+    RssService,
+    WeatherService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

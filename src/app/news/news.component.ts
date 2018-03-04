@@ -25,7 +25,7 @@ export class NewsComponent implements OnInit {
     this.getNews();
   }
 
-  // 取得資訊
+  // 取得資訊 (依方式選擇來源)
   getNews() {
     this.RSS();
     // this.NewsAPI();
@@ -54,6 +54,7 @@ export class NewsComponent implements OnInit {
   }
 
   // RSS
+  // HACK: 有時候得不到最新的 RSS
   RSS() {
     // 隨機RSS
     this.rss.getRSS2JSON()
@@ -96,6 +97,7 @@ export class NewsComponent implements OnInit {
   }
 
   // News API
+  // HACK: 單日有1000次查取限制
   NewsAPI() {
     this.rss.getNewsAPI().subscribe(data => {
       console.log(data);

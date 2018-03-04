@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { News } from './news';
-import 'rxjs/add/operator/map';
 
 @Injectable()
 export class RssService {
 
   private rssProxy = 'https://rss2json.com/api.json?rss_url=';
-  private corsProxy = 'https://cors-anywhere.herokuapp.com/';
   private NewsAPI = 'https://newsapi.org/v2/top-headlines?country=tw&apiKey=5b94ea4ffc1343959a58ab813a842712';
   private sources = [
     'https://dq.yam.com/rss.php', // 地球圖輯隊
