@@ -21,8 +21,8 @@ export class NowComponent implements OnInit {
   constructor(private weather: WeatherService, private ngZone: NgZone) { }
 
   ngOnInit() {
-    this.getData();
-    this.setSkycons('targetID', 'iconName');
+    // this.getData();
+    // this.setSkycons('targetID', 'iconName');
   }
 
   // 取得資訊 (依方式選擇來源)

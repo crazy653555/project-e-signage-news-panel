@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
@@ -14,13 +14,15 @@ export class Weather2Service {
   private lat = 24.9951273;
   private lng = 121.3176767;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private ngZone: NgZone) {
     this.setLocation();
   }
 
+
+
   // 設定所在地座標
   private setLocation() {
-    // 判斷是否可以取得座標
+    // 判斷是否可以取得座標ㄊ
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
         this.lat = position.coords.latitude;

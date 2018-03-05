@@ -1,8 +1,16 @@
+<canvas id="icon2" width="128" height="128"></canvas>
+<!--
+<canvas id="icon3" width="128" height="128"></canvas>
+-->
+<input type="button" (click)="doClick()" value="OK">
 <div *ngIf="data" class="columns">
-  <div *ngFor="let day of data.daily.data" class="column">
-    <h1 [class]="weatherIcon(day.icon)"></h1>
+  <div *ngFor="let day of data.daily.data;let i = index" class="column">
+    <!--  <h1 [class]="weatherIcon(day.icon)"></h1> -->
+    <canvas ng-init="doClick()" id="icon{{i}}" width="128" height="128"></canvas>
+
     <h3>{{ day.time * 1000 | date: 'MMM d' }}</h3>
     <p>{{ day.summary }}</p>
 
   </div>
 </div>
+<canvas id="icon3" width="128" height="128"></canvas>
