@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Weather2Service } from '../weather2.service';
 
 @Component({
   selector: 'app-week',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WeekComponent implements OnInit {
 
-  constructor() { }
+  data: any;
+
+  constructor(private weatherServer: Weather2Service) {}
 
   ngOnInit() {
+    this.weatherServer.getWeekWeather().subscribe(data => this.data = data);
   }
 
+  weatherIcon(icon) {
+    return this.weatherServer.getWeatherIcon(icon);
+  }
 }

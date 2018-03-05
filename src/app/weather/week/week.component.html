@@ -1,3 +1,8 @@
-<p>
-  week works!
-</p>
+<div *ngIf="data" class="columns">
+  <div *ngFor="let day of data.daily.data" class="column">
+    <h1 [class]="weatherIcon(day.icon)"></h1>
+    <h3>{{ day.time * 1000 | date: 'MMM d' }}</h3>
+    <p>{{ day.summary }}</p>
+
+  </div>
+</div>
