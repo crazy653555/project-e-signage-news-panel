@@ -19,7 +19,7 @@ export class WeatherService {
 
   constructor(private http: HttpClient) { }
 
-  getMeteorology(lat, lon) {
+  getMeteorology(lat: string, lon: string) {
     return this.http.get<any[]>(this.corsProxy + this.DarkSkyAPI + this.key + '/' + lat + ',' + lon + '?' + this.exclude);
   }
 
