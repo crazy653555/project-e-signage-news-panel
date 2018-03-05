@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone, AfterViewInit } from '@angular/core';
+import { Component, OnInit, NgZone, AfterViewChecked } from '@angular/core';
 import { Weather2Service } from '../weather2.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { Weather2Service } from '../weather2.service';
   templateUrl: './week.component.html',
   styleUrls: ['./week.component.css']
 })
-export class WeekComponent implements OnInit, AfterViewInit {
+export class WeekComponent implements OnInit, AfterViewChecked {
 
 
   data: any;
@@ -19,12 +19,15 @@ export class WeekComponent implements OnInit, AfterViewInit {
     this.weather.getWeekWeather().subscribe(data => this.data = data);
   }
 
-  ngAfterViewInit(): void {
+  ngAfterViewChecked(): void {
     this.setSkycons('icon1', 'rain');
     this.setSkycons('icon2', 'partly-cloudy-day');
     this.setSkycons('icon3', 'rain');
     this.setSkycons('icon4', 'clear-day');
-    console.log('ngAfterViewInit()');
+    this.setSkycons('icon5', 'clear-day');
+    this.setSkycons('icon6', 'clear-day');
+    this.setSkycons('icon7', 'clear-day');
+    this.setSkycons('icon8', 'rain');
   }
 
   // 產生氣象動圖，方案為 Skycons (https://darkskyapp.github.io/skycons/)
@@ -44,12 +47,4 @@ export class WeekComponent implements OnInit, AfterViewInit {
   weatherIcon2(index, icon) {
     this.setSkycons('icon' + index, icon);
   }
-
-  doClick() {
-    this.setSkycons('icon1', 'rain');
-    this.setSkycons('icon2', 'partly-cloudy-day');
-    this.setSkycons('icon3', 'rain');
-    this.setSkycons('icon4', 'clear-day');
-  }
-
 }
