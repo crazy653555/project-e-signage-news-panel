@@ -34,8 +34,8 @@ a {
   bottom: 0;
   width: 100%;
 }
-.title>span {
-  margin: 0.5rem;
+.title>div {
+  padding: 0.5rem;
 }
 
 /* 頻道 */

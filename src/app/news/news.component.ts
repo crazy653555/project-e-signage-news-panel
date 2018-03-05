@@ -10,8 +10,8 @@ import { News } from './news';
 export class NewsComponent implements OnInit {
 
   // 所有新聞及被選中的新聞
-  feeds;
-  show;
+  feeds: News[];
+  show: News;
   // 輪播順序、停留時間(ms)、過場特效開關
   order = 0;
   every = 10 * 1000;
@@ -21,7 +21,7 @@ export class NewsComponent implements OnInit {
 
   constructor(private rss: RssService) { }
   ngOnInit() {
-    this.show = this.rss.getDefault();
+    this.resetShow();
     this.getNews();
   }
 
@@ -29,6 +29,10 @@ export class NewsComponent implements OnInit {
   getNews() {
     this.RSS();
     // this.NewsAPI();
+  }
+
+  resetShow() {
+    this.show = this.rss.getDefault();
   }
 
   // 切換新聞
@@ -46,9 +50,11 @@ export class NewsComponent implements OnInit {
       this.order++;
       // 新聞用完了就換新聞頻道
       if (this.order >= this.feeds.length) {
-        this.order = 0;
         clearInterval(this.timer);  // 取消原計時，保留時間給頻道切換用
-        this.getNews();
+        setTimeout(() => {
+          this.order = 0;
+          this.getNews();
+        }, this.every);
       }
     }, fadeDur);
   }
@@ -66,7 +72,7 @@ export class NewsComponent implements OnInit {
         data['items'].forEach(i => {
           // 取得圖片
           let thumb = i.thumbnail === '' ? (i.enclosure.link === undefined ? '' : i.enclosure.link) : i.thumbnail;
-          thumb = thumb.match(/\.(jpeg|jpg|gif|png|webp)/i) == null ? '' : thumb;
+          thumb = thumb.match(/\.(jpeg|jpg|gif|png|webp)/i) === null ? '' : thumb;
           // 放置內容
           const n: News = {
             id: i.id,
@@ -83,7 +89,7 @@ export class NewsComponent implements OnInit {
         // 錯誤處理 (顯示預設資訊)
         error => {
           console.log('Error: ', error);
-          this.show = this.rss.getDefault();
+          this.resetShow();
         },
         // 正式上工
         () => {
@@ -119,7 +125,7 @@ export class NewsComponent implements OnInit {
       // 錯誤處理 (顯示預設資訊)
       error => {
         console.log('Error: ', error);
-        this.show = this.rss.getDefault();
+        this.resetShow();
       },
       // 正式上工
       () => {

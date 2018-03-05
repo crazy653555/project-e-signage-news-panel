@@ -4,7 +4,7 @@ main {
   position: relative;
   height: 100%;
   background: #232526;
-  background: linear-gradient(to bottom right, #d1d1d1, #232526);
+  background: linear-gradient(to bottom, #64b3f4, #c2e59c);
 }
 
 /* 置底，高度由內容決定 */

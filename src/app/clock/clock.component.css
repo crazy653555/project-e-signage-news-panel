@@ -1,5 +1,17 @@
 .your-clock {
-    margin: auto;
-    padding: 1rem 0;
-    width: 465px;
+  margin: auto;
+  padding: 1rem 0;
+  width: 465px;
+}
+
+/* 客制化外觀 */
+
+/deep/ .flip-clock-wrapper ul li a div div.inn {
+  color: #333 !important;
+  background-color: #eee !important;
+}
+
+/deep/ .flip-clock-dot {
+  background: #eee !important;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.8) !important;
 }
