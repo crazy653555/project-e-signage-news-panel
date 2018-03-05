@@ -34,6 +34,7 @@ a {
   bottom: 0;
   width: 100%;
 }
+
 .title>div {
   padding: 0.5rem;
 }
@@ -52,31 +53,35 @@ a {
 
 /* 出入場特效 */
 
-.fadeIn {
-  opacity: 0;
-  animation: fade_in 1s ease-in-out;
+.fadeIn, .fadeOut {
+  transform-origin: center bottom;
   animation-fill-mode: forwards;
+}
+.fadeIn {
+  animation: fade_in 1s ease-in-out;
+}
+.fadeOut {
+  animation: fade_out 1s ease-in-out;
 }
 
 @keyframes fade_in {
   0% {
+    transform: rotateX(90deg);
     opacity: 0;
   }
   100% {
+    transform: rotateX(0deg);
     opacity: 1;
   }
-}
-
-.fadeOut {
-  animation: fade_out 1s ease-in-out;
-  animation-fill-mode: forwards;
 }
 
 @keyframes fade_out {
   0% {
+    transform: rotateX(0deg);
     opacity: 1;
   }
   100% {
+    transform: rotateX(90deg);
     opacity: 0;
   }
 }

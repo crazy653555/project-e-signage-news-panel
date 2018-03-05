@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { RssService } from './rss.service';
+import { NewsService } from './news.service';
 import { News } from './news';
 
 @Component({
@@ -19,7 +19,7 @@ export class NewsComponent implements OnInit {
   doFadeIn = true;
   doFadeOut = false;
 
-  constructor(private rss: RssService) { }
+  constructor(private ns: NewsService) { }
   ngOnInit() {
     this.resetShow();
     this.getNews();
@@ -27,12 +27,12 @@ export class NewsComponent implements OnInit {
 
   // 取得資訊 (依方式選擇來源)
   getNews() {
-    this.RSS();
+    this.RSSs();
     // this.NewsAPI();
   }
 
   resetShow() {
-    this.show = this.rss.getDefault();
+    this.show = this.ns.default;
   }
 
   // 切換新聞
@@ -59,11 +59,9 @@ export class NewsComponent implements OnInit {
     }, fadeDur);
   }
 
-  // RSS
-  // HACK: 有時候得不到最新的 RSS
-  RSS() {
-    // 隨機RSS
-    this.rss.getRSS2JSON()
+  // 隨機RSS
+  RSSs() {
+    this.ns.getRSSs()
       .subscribe(data => {
         // 逐筆填入
         console.log(data);
@@ -102,10 +100,9 @@ export class NewsComponent implements OnInit {
       );
   }
 
-  // News API
-  // HACK: 單日有1000次查取限制
-  NewsAPI() {
-    this.rss.getNewsAPI().subscribe(data => {
+  // Google News .HACK: 單日有1000次查取限制
+  GoogleNews() {
+    this.ns.getGoogleNews().subscribe(data => {
       console.log(data);
       this.feeds = [];
       // 逐筆填入

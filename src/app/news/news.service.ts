@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { News } from './news';
 
 @Injectable()
-export class RssService {
+export class NewsService {
 
   private rssProxy = 'https://rss2json.com/api.json?rss_url=';
   private NewsAPI = 'https://newsapi.org/v2/top-headlines?country=tw&apiKey=5b94ea4ffc1343959a58ab813a842712';
@@ -13,8 +13,8 @@ export class RssService {
     'https://technews.tw/tn-rss/', // TechNews 科技新報 (內容斷在第二行)
     'https://e-info.org.tw/rss.xml', // 台灣環境資訊協會
     'https://zht.globalvoices.org/feed/', // 全球之聲
-    'https://cn.nytimes.com/rss/zh-hant/', // 紐約時報中文網 (圖文未分流)
     'https://www.newsmarket.com.tw/feed/', // 上下游News&Market
+    'https://cn.nytimes.com/rss/zh-hant/', // 紐約時報中文網 (圖文未分流)
     'https://www.twreporter.org/a/rss2.xml', // 報導者
     'https://www.voacantonese.com/api/zprtie-ttp', // 美國之音
     'https://feeds.bbci.co.uk/zhongwen/trad/rss.xml', // BBC中文網
@@ -27,7 +27,7 @@ export class RssService {
     // 'https://tw.appledaily.com/rss/newcreate/kind/sec/type/1077', // 蘋果日報 (雜圖太多)
   ];
 
-  private default: News = {
+  public default: News = {
     id: 0,
     title: '新聞串流中...',
     description: '',
@@ -39,18 +39,16 @@ export class RssService {
 
   constructor(private http: HttpClient) { }
 
-  getDefault() {
-    return this.default;
-  }
 
-  getRSS2JSON() {
+  getRSSs() {
     const pickOne = Math.floor(Math.random() * (this.sources.length - 1));
     console.log(this.sources[pickOne]);
     return this.http.get<any[]>(this.rssProxy + this.sources[pickOne]);
   }
 
-  getNewsAPI() {
+  getGoogleNews() {
     return this.http.get<any[]>(this.NewsAPI);
   }
+
 
 }

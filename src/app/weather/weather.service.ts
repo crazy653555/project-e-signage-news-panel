@@ -23,7 +23,7 @@ export class WeatherService {
     return this.http.get<any[]>(this.corsProxy + this.DarkSkyAPI + this.key + '/' + lat + ',' + lon + '?' + this.exclude);
   }
 
-  getPlace(lat, lon) {
+  getPlace(lat: string, lon: string) {
     return this.http.get<any[]>(this.urlGoogleMaps + lat + ',' + lon);
   }
 

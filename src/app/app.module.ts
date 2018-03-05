@@ -9,7 +9,7 @@ import { NowComponent } from './weather/now/now.component';
 import { WeekComponent } from './weather/week/week.component';
 import { CityComponent } from './weather/city/city.component';
 import { NewsComponent } from './news/news.component';
-import { RssService } from './news/rss.service';
+import { NewsService } from './news/news.service';
 import { NewsContentPipe } from './news/news-content.pipe';
 import { WeatherService } from './weather/weather.service';
 
@@ -29,7 +29,7 @@ import { WeatherService } from './weather/weather.service';
     HttpClientModule
   ],
   providers: [
-    RssService,
+    NewsService,
     WeatherService,
   ],
   bootstrap: [AppComponent]
