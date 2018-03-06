@@ -13,6 +13,7 @@ import { RssService } from './news/rss.service';
 import { NewsContentPipe } from './news/news-content.pipe';
 import { WeatherService } from './weather/weather.service';
 import { Weather2Service } from './weather/weather2.service';
+import { CelsiusPipe } from './weather/celsius.pipe';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { Weather2Service } from './weather/weather2.service';
     WeekComponent,
     CityComponent,
     NewsComponent,
-    NewsContentPipe
+    NewsContentPipe,
+    CelsiusPipe
   ],
   imports: [
     BrowserModule,

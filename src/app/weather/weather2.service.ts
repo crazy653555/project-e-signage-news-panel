@@ -22,7 +22,7 @@ export class Weather2Service {
 
   // 設定所在地座標
   private setLocation() {
-    // 判斷是否可以取得座標ㄊ
+    // 判斷是否可以取得座標
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
         this.lat = position.coords.latitude;

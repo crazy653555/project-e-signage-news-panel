@@ -1,5 +1,6 @@
 import { Component, OnInit, NgZone, AfterViewChecked } from '@angular/core';
 import { Weather2Service } from '../weather2.service';
+import { Daily } from '../daily';
 
 @Component({
   selector: 'app-week',
@@ -8,18 +9,19 @@ import { Weather2Service } from '../weather2.service';
 })
 export class WeekComponent implements OnInit, AfterViewChecked {
 
-
   data: any;
   iconColor = 'black';
+  daily:Daily[];
 
   constructor(private weather: Weather2Service, private ngZone: NgZone) { }
 
 
   ngOnInit() {
-    this.weather.getWeekWeather().subscribe(data => this.data = data);
+    this.weather.getWeekWeather().subscribe(data => this.data = data)
   }
 
   ngAfterViewChecked(): void {
+
     this.setSkycons('icon1', 'rain');
     this.setSkycons('icon2', 'partly-cloudy-day');
     this.setSkycons('icon3', 'rain');
