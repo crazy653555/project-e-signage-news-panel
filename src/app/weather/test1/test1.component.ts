@@ -14,7 +14,6 @@ export class Test1Component implements OnInit,AfterViewInit {
   constructor(private ngZone: NgZone) {}
 
   ngOnInit() {
-    console.log("weather=>" + this.weather.time);
     this.id = "id" +this.weather.time;
   }
 
