@@ -1,10 +1,7 @@
-<div *ngIf="data" class="columns">
-  <div *ngFor="let day of data.daily.data;let i = index" class="column">
-     <h1 [class]="weatherIcon(day.icon)"></h1>
-    <canvas id="icon{{i + 1}}" width="128" height="128"></canvas>
-    <h3>{{ day.time * 1000 | date: 'MMM d' }}</h3>
-    <p>{{ day.temperatureMin }}</p>
-    <p>{{ day.temperatureMax }}</p>
-
+<div *ngIf="weatherData" class="columns">
+  <div *ngFor="let weather of weatherData.daily.data;let i = index" class="column">
+    <div *ngIf="weather">
+      <app-test1 [weather]="weather"></app-test1>
+    </div>
   </div>
 </div>

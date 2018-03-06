@@ -14,6 +14,7 @@ import { NewsContentPipe } from './news/news-content.pipe';
 import { WeatherService } from './weather/weather.service';
 import { Weather2Service } from './weather/weather2.service';
 import { CelsiusPipe } from './weather/celsius.pipe';
+import { Test1Component } from './weather/test1/test1.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { CelsiusPipe } from './weather/celsius.pipe';
     CityComponent,
     NewsComponent,
     NewsContentPipe,
-    CelsiusPipe
+    CelsiusPipe,
+    Test1Component,
   ],
   imports: [
     BrowserModule,
