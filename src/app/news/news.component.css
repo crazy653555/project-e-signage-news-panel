@@ -82,14 +82,14 @@ a {
   }
   100% {
     transform: rotateX(0);
-    opacity: 1;
+    opacity: .7;
   }
 }
 
 @keyframes fade_out {
   0% {
     transform: rotateX(0);
-    opacity: 1;
+    opacity: .7;
   }
   100% {
     transform: rotateX(90deg);

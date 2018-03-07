@@ -1,4 +1,4 @@
 <div class='frame'>
   <canvas class='each' [id]="icon_id" [width]="icon_width" [height]="icon_height"></canvas>
-  <div class='each' [innerHTML]="data['temperature'] | celsiusContent"></div>
+  <div class='each' [innerHTML]="data['temperature'] | celsiusContent: true"></div>
 </div>
