@@ -10,11 +10,14 @@ export class ClockComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.startClock();
+  }
+
+  // 啟動時鐘模式
+  startClock() {
     const clock = $('.your-clock').FlipClock({
       clockFace: 'TwentyFourHourClock'
     });
-
-
   }
 
 }

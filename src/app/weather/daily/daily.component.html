@@ -1,0 +1,6 @@
+<div class='frame'>
+    <div class='each' [innerHTML]="data['time'] | timeContent: 'day'"></div>
+    <canvas class='each' [id]="icon_id" [width]="icon_width" [height]="icon_height"></canvas>
+    <div class='each' [innerHTML]="(data['temperatureMin'] | celsiusContent) + '~' + (data['temperatureMax'] | celsiusContent: true)"></div>
+  </div>
+  

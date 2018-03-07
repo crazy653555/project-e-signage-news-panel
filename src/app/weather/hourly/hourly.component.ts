@@ -2,18 +2,18 @@ import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 import { WeatherService } from '../weather.service';
 
 @Component({
-  selector: 'app-city',
-  templateUrl: './city.component.html',
-  styleUrls: ['./city.component.css']
+  selector: 'app-hourly',
+  templateUrl: './hourly.component.html',
+  styleUrls: ['./hourly.component.css']
 })
-export class CityComponent implements OnInit, AfterViewInit {
+export class HourlyComponent implements OnInit, AfterViewInit {
 
   // 取得資訊的放置處
   @Input() data;
   @Input() index;
 
   // 天氣圖樣式設定
-  icon_id = 'icon_city_';
+  icon_id = 'icon_hourly_';
   icon_width = '50';
   icon_height = '50';
   icon_color = 'white';
@@ -29,6 +29,5 @@ export class CityComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.ws.setSkycons(this.icon_id, this.icon_name, this.icon_color);
   }
-
 
 }

@@ -1,5 +1,5 @@
 <div class='frame'>
-  <div class='each' [innerHTML]="data['city']"></div>
+  <div class='each' [innerHTML]="data['time'] | timeContent: '24'"></div>
   <canvas class='each' [id]="icon_id" [width]="icon_width" [height]="icon_height"></canvas>
   <div class='each' [innerHTML]="data['temperature'] | celsiusContent: true"></div>
 </div>

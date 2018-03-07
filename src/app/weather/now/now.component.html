@@ -1,1 +1,4 @@
-<canvas id="icon1" width="128" height="128"></canvas>
+<div class='frame'>
+  <canvas class='each' [id]="icon_id" [width]="icon_width" [height]="icon_height"></canvas>
+  <div class='each' [innerHTML]="data['temperature'] | celsiusContent"></div>
+</div>

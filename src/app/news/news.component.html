@@ -1,15 +1,21 @@
-<!-- <input type="button" value="10秒換一則，等不及的話請按此(測試用)" (click)="nextNews()"> -->
 <a target="_blank" [href]="show.link" [title]="show.description | newsContent">
-  <div class="news" [class.fadeIn]="doFadeIn" [class.fadeOut]="doFadeOut" 
-  [style.background-image]="show.thumbnail !== '' ? 'url(' + show.thumbnail + ')' : null">
+  <div class="news">
 
-    <div class="channel" *ngIf="show.channel !== ''">
-      <span [innerHTML]="show.channel"></span>
+    <!-- 配圖區 -->
+    <div class="picture"
+    [class.fadeIn]="doFadeIn" [class.fadeOut]="doFadeOut" 
+    [style.background-image]="show.thumbnail !== '' ? 'url(' + show.thumbnail + ')' : null">
+
+      <div class="channel" *ngIf="show.channel !== ''" [class.fadeIn]="doFadeIn" [class.fadeOut]="doFadeOut">
+        <span [innerHTML]="show.channel"></span>
+      </div>
+
     </div>
 
+    <!-- 文字區 -->
     <div class="title">
       <div> {{show.title}}</div>
     </div>
-    
+
   </div>
 </a>

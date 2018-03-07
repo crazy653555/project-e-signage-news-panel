@@ -1,30 +1,32 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class WeatherService {
 
-  // CORS
   private corsProxy = 'https://cors-anywhere.herokuapp.com/';
+  private apiURL = 'https://api.darksky.net/forecast';
+  private key = '/8b18f413cfc514de83de667d7ee86aeb';
+  private lang = '&lang=zh-tw';
 
-  // DarkSkyAPI
+  constructor(private http: HttpClient, private nz: NgZone) { }
+
+  // 採用DarkSkyAPI (https://darksky.net/dev/docs)
   // HACK: 單日有1000次查取限制
-  private DarkSkyAPI = 'https://api.darksky.net/forecast';
-  private key = '/ad50d1432876d180d315b159c4cab22d';
-  private exclude = '&exclude=minutely,hourly,alerts,flags';
-
-  // Google Maps Geocoding API
-  private urlGoogleMaps = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=';
-
-
-  constructor(private http: HttpClient) { }
-
-  getMeteorology(lat: string, lon: string) {
-    return this.http.get<any[]>(this.corsProxy + this.DarkSkyAPI + this.key + '/' + lat + ',' + lon + '?' + this.exclude);
+  getMeteorology(lat: string, lon: string, onlyNow: Boolean) {
+    const exclude = onlyNow ? '&exclude=hourly,daily,minutely,alerts,flags' : '&exclude=minutely,alerts,flags';
+    return this.http.get<any[]>(this.corsProxy + this.apiURL + this.key + '/' + lat + ',' + lon + '?' + this.lang + exclude);
   }
 
-  getPlace(lat: string, lon: string) {
-    return this.http.get<any[]>(this.urlGoogleMaps + lat + ',' + lon);
+
+  // 產生氣象動圖，方案為 Skycons (https://darkskyapp.github.io/skycons/)
+  // HACK: 由於 Skycons 係由 index.html 內之 skycons.js 啟動，故 compile 時會出現 error TS2552: Cannot find name 'Skycons'.
+  setSkycons(element_id: string, icon_name: string, icon_color: string) {
+    this.nz.runOutsideAngular(() => {
+      const skycons = new Skycons({ 'color': icon_color });
+      skycons.set(element_id, icon_name);
+      skycons.play();
+    });
   }
 
 }

@@ -14,7 +14,7 @@ export class NewsComponent implements OnInit {
   show: News;
   // 輪播順序、停留時間(ms)、過場特效開關
   order = 0;
-  every = 10 * 1000;
+  every = 8 * 1000;
   timer;
   doFadeIn = true;
   doFadeOut = false;

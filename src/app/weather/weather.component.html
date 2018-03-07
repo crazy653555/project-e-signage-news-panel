@@ -1,0 +1,33 @@
+<div class='w_framework'>
+
+  <!-- 當下即時天氣 -->
+  <app-now class="w_each" *ngIf="currently" [data]="currently"></app-now>
+
+  <!-- 各模式資訊 -->
+  <div [class.fadeIn]="doFadeIn" [class.fadeOut]="doFadeOut">
+
+    <div class="w_each" *ngIf="hourly && show === 'hourly'">
+      <div *ngFor="let el of hourly; let i = index;">
+        <app-hourly [data]="el" [index]="i"></app-hourly>
+      </div>
+      <!-- TODO: 由於會出現華氏的描述，暫時先隱藏 -->
+      <!-- <div class='summary'>{{data['hourly']['summary']}}</div> -->
+    </div>
+  
+    <div class="w_each" *ngIf="daily && show === 'daily'">
+      <div *ngFor="let el of daily; let i = index;">
+        <app-daily [data]="el" [index]="i"></app-daily>
+      </div>
+      <!-- TODO: 由於會出現華氏的描述，暫時先隱藏 -->
+      <!-- <div class='summary'>{{data['daily']['summary']}}</div> -->
+    </div>
+  
+    <div class="w_each" *ngIf="cities && show === 'cities'">
+      <div *ngFor="let el of cities; let i = index;">
+        <app-city [data]="el" [index]="i"></app-city>
+      </div>
+    </div>
+
+  </div>
+
+</div>
