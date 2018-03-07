@@ -16,12 +16,6 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 * [Dark Sky API](https://darksky.net/dev)
 * [Skycons](https://darkskyapp.github.io/skycons/)
 
-
-# 注意事項
-
-* 適合直立式螢幕
-* 建議螢幕解析度不低於 470 * 680
-
 # 建議客製化項目
 
 * 看版：底圖

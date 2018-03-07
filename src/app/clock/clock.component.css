@@ -3,18 +3,7 @@
 .your-clock {
   margin: auto;
   padding: 1rem 0;
-  width: 465px;
-}
-
-/* RWD 化 */
-/* TODO: scale 後無法置中 */
-
-@media screen and (max-width: 465px) {
-  .your-clock {
-    -webkit-transform: scale(0.75, 0.75);
-    transform: scale(0.75, 0.75) !important;
-    margin: 0 -11.5%;
-  }
+  width: 300px;
 }
 
 /* 客制化外觀 */

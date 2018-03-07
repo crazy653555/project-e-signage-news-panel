@@ -11,11 +11,13 @@ export class WeatherComponent implements OnInit {
 
   // HACK：地點清單
   places = [
-    { latitude: '24.8545491', longitude: '120.9519908', name: '桃園市' }, // 預設地點 (不出現在城市清單中)
-    { latitude: '25.0169639', longitude: '121.2261837', name: '台北市' }, // 其它地點 1
-    { latitude: '24.2198468', longitude: '120.6756798', name: '台中市' }, // 其它地點 2
-    { latitude: '21.9790996', longitude: '116.6134305', name: '高雄市' }, // 其它地點 3
-    { latitude: '25.0330813', longitude: '121.2880941', name: '宜蘭縣' }, // 其它地點 3
+    { latitude: '24.137224', longitude: '120.686751', name: '臺中' }, // 預設地點 (不出現在城市清單中)
+    { latitude: '25.047814', longitude: '121.517082', name: '臺北' }, // 其它地點：台北車站
+    { latitude: '24.801607', longitude: '120.971512', name: '新竹' }, // 其它地點：新竹火車站
+    { latitude: '24.137224', longitude: '120.686751', name: '臺中' }, // 其它地點：臺中車站
+    { latitude: '23.479110', longitude: '120.441053', name: '嘉義' }, // 其它地點：嘉義車站
+    { latitude: '22.997192', longitude: '120.212576', name: '臺南' }, // 其它地點：台南火車站
+    { latitude: '22.639752', longitude: '120.302136', name: '高雄' }, // 其它地點：高雄車站
   ];
   // 取得資訊的放置處
   data;
@@ -30,13 +32,13 @@ export class WeatherComponent implements OnInit {
   mode = ['hourly', 'daily', 'cities'];
   show = 'hourly';
   order = 0;
-  every = 6 * 1000;
+  every = 10 * 1000;
   timer;
   doFadeIn = true;
   doFadeOut = false;
   // 資料量限制
-  hour_amount = 4;
-  day_amount = 4;
+  hour_amount = 6;
+  day_amount = 6;
 
   constructor(private ws: WeatherService, private ngZone: NgZone) { }
 
