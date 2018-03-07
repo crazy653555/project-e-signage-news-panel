@@ -20,6 +20,7 @@ import { RainContentPipe } from './weather/rain-content.pipe';
 import { NewsComponent } from './news/news.component';
 import { NewsContentPipe } from './news/news-content.pipe';
 import { NewsService } from './news/news.service';
+import { Pm25Component } from './weather/pm25/pm25.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { NewsService } from './news/news.service';
     TimeContentPipe,
     NewsComponent,
     NewsContentPipe,
+    Pm25Component,
   ],
   imports: [
     BrowserModule,

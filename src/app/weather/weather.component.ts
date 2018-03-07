@@ -11,7 +11,7 @@ export class WeatherComponent implements OnInit {
 
   // HACK：地點清單
   places = [
-    { latitude: '24.137224', longitude: '120.686751', name: '臺中' }, // 預設地點 (不出現在城市清單中)
+    { latitude: '24.137224', longitude: '120.686751', name: '臺中市' }, // 預設地點 (不出現在城市清單中)
     { latitude: '25.047814', longitude: '121.517082', name: '臺北' }, // 其它地點：台北車站
     { latitude: '24.801607', longitude: '120.971512', name: '新竹' }, // 其它地點：新竹火車站
     { latitude: '24.137224', longitude: '120.686751', name: '臺中' }, // 其它地點：臺中車站
@@ -25,6 +25,8 @@ export class WeatherComponent implements OnInit {
   hourly;
   daily;
   cities;
+  pm25;
+  pm25level;
   // 重取資料時間 (ms)
   re_every = 7200 * 1000;
   re_timer;
@@ -51,6 +53,7 @@ export class WeatherComponent implements OnInit {
     clearInterval(this.re_timer);
     this.bindHere();
     this.bindCities();
+    this.bindPM25();
     this.re_timer = setInterval(() => {
       this.bindData();
     }, this.re_every);
@@ -116,6 +119,24 @@ export class WeatherComponent implements OnInit {
         );
     });
     console.log(this.cities);
+  }
+
+  // 結繫PM25
+  bindPM25() {
+    this.ws.getPM25()
+      .subscribe(j => {
+        // 取出符合城市的第一筆
+        this.pm25 = j.find(el => (el.county === this.places[0].name));
+        console.log(this.pm25);
+      },
+        error => {
+          console.log('Error: ', error);
+        },
+        // callback
+        () => {
+          this.pm25level = this.ws.getPM25ToLevel(this.pm25.PM25);
+        }
+      );
   }
 
 }

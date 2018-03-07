@@ -27,7 +27,10 @@
         <app-city [data]="el" [index]="i"></app-city>
       </div>
     </div>
-
+    
   </div>
 
+  <!-- PM2.5 -->
+  <app-pm25 class="w_each" *ngIf="pm25" [data]="pm25" [level]="pm25level"></app-pm25>
+  
 </div>

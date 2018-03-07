@@ -29,4 +29,27 @@ export class WeatherService {
     });
   }
 
+  // 採用政府資料開放平台 (https://data.gov.tw/dataset/34827)
+  // HACK: 速度有點慢，大約要5秒
+  getPM25() {
+    return this.http.get<any[]>(this.corsProxy + 'http://opendata.epa.gov.tw/ws/Data/ATM00625/?$format=json');
+  }
+
+  // 依PM2.5值來判斷等級，參考細懸浮微粒(PM2.5)指標對照表與活動建議 (http://www.tnepb.gov.tw/AIR_PM25.htm)
+  getPM25ToLevel(value) {
+    const levels = [
+      { lv: 1, color: 'green', PmFrom: 0, PmTo: 11 },
+      { lv: 2, color: 'green', PmFrom: 12, PmTo: 23 },
+      { lv: 3, color: 'green', PmFrom: 24, PmTo: 35 },
+      { lv: 4, color: 'yellow', PmFrom: 36, PmTo: 41 },
+      { lv: 5, color: 'yellow', PmFrom: 42, PmTo: 47 },
+      { lv: 6, color: 'yellow', PmFrom: 48, PmTo: 53 },
+      { lv: 7, color: 'red', PmFrom: 54, PmTo: 58 },
+      { lv: 8, color: 'red', PmFrom: 59, PmTo: 64 },
+      { lv: 9, color: 'red', PmFrom: 65, PmTo: 70 },
+      { lv: 10, color: 'purple', PmFrom: 71, PmTo: 999 },
+    ];
+    return levels.find(el => value >= el.PmFrom && value <= el.PmTo);
+  }
+
 }
