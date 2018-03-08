@@ -29,10 +29,9 @@ export class WeatherService {
     });
   }
 
-  // 採用政府資料開放平台 (https://data.gov.tw/dataset/34827)
-  // HACK: 速度有點慢，大約要5秒
+  // 採用PM2.5 開放資料入口網站：台灣環保署測站 (https://pm25.lass-net.org/zh_tw/)
   getPM25() {
-    return this.http.get<any[]>(this.corsProxy + 'http://opendata.epa.gov.tw/ws/Data/ATM00625/?$format=json');
+    return this.http.get<any[]>('https://pm25.lass-net.org/data/last-all-epa.json');
   }
 
   // 依PM2.5值來判斷等級，參考細懸浮微粒(PM2.5)指標對照表與活動建議 (http://www.tnepb.gov.tw/AIR_PM25.htm)

@@ -126,7 +126,7 @@ export class WeatherComponent implements OnInit {
     this.ws.getPM25()
       .subscribe(j => {
         // 取出符合城市的第一筆
-        this.pm25 = j.find(el => (el.county === this.places[0].name));
+        this.pm25 = j['feeds'].find(el => (el.County === this.places[0].name));
         console.log(this.pm25);
       },
         error => {
@@ -134,7 +134,7 @@ export class WeatherComponent implements OnInit {
         },
         // callback
         () => {
-          this.pm25level = this.ws.getPM25ToLevel(this.pm25.PM25);
+          this.pm25level = this.ws.getPM25ToLevel(this.pm25['PM2_5']);
         }
       );
   }
