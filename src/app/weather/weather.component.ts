@@ -53,7 +53,7 @@ export class WeatherComponent implements OnInit {
     clearInterval(this.re_timer);
     this.bindHere();
     this.bindCities();
-    this.bindPM25();
+    // this.bindPM25();
     this.re_timer = setInterval(() => {
       this.bindData();
     }, this.re_every);
@@ -84,7 +84,7 @@ export class WeatherComponent implements OnInit {
   bindHere() {
     this.ws.getMeteorology(this.places[0].latitude, this.places[0].longitude, false)
       .subscribe(j => {
-        console.log(j);
+        // console.log(j);
         this.data = j;
         this.currently = j['currently'];
         this.hourly = j['hourly']['data'].splice(1, this.hour_amount);
@@ -118,7 +118,7 @@ export class WeatherComponent implements OnInit {
           }
         );
     });
-    console.log(this.cities);
+    // console.log(this.cities);
   }
 
   // 結繫PM25
@@ -127,7 +127,6 @@ export class WeatherComponent implements OnInit {
       .subscribe(j => {
         // 取出符合城市的第一筆
         this.pm25 = j['feeds'].find(el => (el.County === this.places[0].name));
-        console.log(this.pm25);
       },
         error => {
           console.log('Error: ', error);

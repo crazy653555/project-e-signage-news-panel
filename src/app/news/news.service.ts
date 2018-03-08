@@ -42,7 +42,7 @@ export class NewsService {
 
   getRSSs() {
     const pickOne = Math.floor(Math.random() * (this.sources.length - 1));
-    console.log(this.sources[pickOne]);
+    // console.log(this.sources[pickOne]);
     return this.http.get<any[]>(this.rssProxy + this.sources[pickOne]);
   }
 

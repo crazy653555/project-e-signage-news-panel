@@ -64,7 +64,7 @@ export class NewsComponent implements OnInit {
     this.ns.getRSSs()
       .subscribe(data => {
         // 逐筆填入
-        console.log(data);
+        // console.log(data);
         this.feeds = [];
         const channel_name = data['feed'].title;
         data['items'].forEach(i => {
@@ -103,7 +103,7 @@ export class NewsComponent implements OnInit {
   // Google News .HACK: 單日有1000次查取限制
   GoogleNews() {
     this.ns.getGoogleNews().subscribe(data => {
-      console.log(data);
+      // console.log(data);
       this.feeds = [];
       // 逐筆填入
       data['articles'].forEach(i => {
