@@ -44,7 +44,12 @@ a {
 }
 
 .title>div {
-  padding: 0.5rem;
+  margin: 0.5rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  height: 4rem;
 }
 
 /* 頻道 */
@@ -61,38 +66,31 @@ a {
 
 /* 出入場特效 */
 
-.fadeIn,
-.fadeOut {
-  transform-origin: center center;
-  animation-fill-mode: forwards;
-}
-
 .fadeIn {
+  /* transform-origin: left top; */
   animation: fade_in 1s ease-in-out;
 }
-
 .fadeOut {
+  /* transform-origin: left bottom; */
   animation: fade_out 1s ease-in-out;
+}
+.fadeIn, .fadeOut {
+  animation-fill-mode: forwards;
 }
 
 @keyframes fade_in {
   0% {
-    transform: rotateX(-90deg);
+    transform: translateY(-4rem);
     opacity: 0;
   }
-  100% {
-    transform: rotateX(0);
-    opacity: .7;
+  50% {
+    opacity: 0;
   }
 }
 
 @keyframes fade_out {
-  0% {
-    transform: rotateX(0);
-    opacity: .7;
-  }
   100% {
-    transform: rotateX(90deg);
+    transform: translateY(4.5rem);
     opacity: 0;
   }
 }
