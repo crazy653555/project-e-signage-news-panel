@@ -1,6 +1,6 @@
 /* 置底的前置作業 */
 
-main {
+.main {
   position: relative;
   height: 100%;
   background: #232526;
