@@ -1,9 +1,12 @@
 
 .frame {
   width: 100%;
+  margin: auto;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  background-color: rgb(27, 63, 139);
+  border-radius: .5rem .5rem 0 0;  
 }
 
 .each {
@@ -11,4 +14,9 @@
   justify-content: center;
   color: white;
   font-size: 7rem;
+}
+
+img {
+  width: 5.5rem;
+  height: 5.5rem;
 }

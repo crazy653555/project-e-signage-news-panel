@@ -1,6 +1,7 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { WeatherService } from './weather.service';
 import { NowComponent } from './now/now.component';
+import { Placeholder } from '@angular/compiler/src/i18n/i18n_ast';
 
 @Component({
   selector: 'app-weather',
@@ -31,8 +32,8 @@ export class WeatherComponent implements OnInit {
   re_every = 7200 * 1000;
   re_timer;
   // 模式順序、停留時間(ms)、過場特效開關
-  mode = ['hourly', 'daily', 'cities'];
-  show = 'hourly';
+  mode = ['daily', 'cities', 'hourly'];
+  show = 'hourly'; // 最先顯示的模式
   order = 0;
   every = 10 * 1000;
   timer;
@@ -99,15 +100,14 @@ export class WeatherComponent implements OnInit {
       );
   }
 
-  // 結繫城市們
+  // 結繫城市們(不包含預設城市)
   bindCities() {
     this.cities = [];
-    const list = this.places.splice(1);
-    list.forEach(pl => {
-      // TODO: 因為非同步的關係，連線速率若不順，城市不會一定依序push進去
-      this.ws.getMeteorology(pl.latitude, pl.longitude, true)
+    for (let idx = 1; idx < this.places.length; idx++) {
+      this.ws.getMeteorology(this.places[idx].latitude, this.places[idx].longitude, true)
         .subscribe(j => {
-          j['currently']['city'] = pl.name;
+          j['currently']['city'] = this.places[idx].name;
+          j['currently']['cityOrder'] = idx;
           this.cities.push(j['currently']);
         },
           error => {
@@ -115,10 +115,13 @@ export class WeatherComponent implements OnInit {
           },
           // callback
           () => {
+            // 因為非同步的關係，連線速率若不順，城市不會一定依序push進去，故請於事後進行排序加工
+            this.cities = this.cities.sort(function (a, b) {
+              return a.cityOrder > b.cityOrder;
+            });
           }
-        );
-    });
-    // console.log(this.cities);
+        ); // subscribe END
+    }
   }
 
   // 結繫PM25

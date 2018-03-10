@@ -16,6 +16,7 @@ import { WeatherService } from './weather/weather.service';
 import { CelsiusContentPipe } from './weather/celsius-content.pipe';
 import { TimeContentPipe } from './weather/time-content.pipe';
 import { RainContentPipe } from './weather/rain-content.pipe';
+import { IconUrlPipe } from './weather/icon-url.pipe';
 
 import { NewsComponent } from './news/news.component';
 import { NewsContentPipe } from './news/news-content.pipe';
@@ -38,6 +39,7 @@ import { Pm25Component } from './weather/pm25/pm25.component';
     NewsComponent,
     NewsContentPipe,
     Pm25Component,
+    IconUrlPipe,
   ],
   imports: [
     BrowserModule,

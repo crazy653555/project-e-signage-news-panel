@@ -1,5 +1,5 @@
-<div class='frame'>
+<div class='frame' [class.odd]="index % 2" [class.end]="index === amount - 1">
   <div class='each' [innerHTML]="data['time'] | timeContent: '24'"></div>
-  <canvas class='each' [id]="icon_id" [width]="icon_width" [height]="icon_height"></canvas>
+  <img class='each' [src]="data.icon | iconUrl" [alt]="data.icon" />
   <div class='each' [innerHTML]="data['temperature'] | celsiusContent: true"></div>
 </div>

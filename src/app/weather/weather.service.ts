@@ -6,16 +6,24 @@ export class WeatherService {
 
   private corsProxy = 'https://cors-anywhere.herokuapp.com/';
   private apiURL = 'https://api.darksky.net/forecast';
-  private key = '/8b18f413cfc514de83de667d7ee86aeb';
+  private keys = [
+    // '/8b18f413cfc514de83de667d7ee86aeb',
+    '/57c0e0a1498aec9de720647485445309',
+    '/4e5b4dc16b0aacc870c768f5e82eb8eb',
+    '/d82b64cca6078d56d946485dd36726e1',
+    '/8ea838434511179070792b14d212b3c4',
+    '/694e98f67169837bcbfa5362a8540f48',
+    '/88a5d837b6a4b9cdb2b0c968d739820a'];
   private lang = '&lang=zh-tw';
 
   constructor(private http: HttpClient, private nz: NgZone) { }
 
   // 採用DarkSkyAPI (https://darksky.net/dev/docs)
-  // HACK: 單日有1000次查取限制
+  // HACK: 單日有1000次查取限制，目前採多金鑰規避法
   getMeteorology(lat: string, lon: string, onlyNow: Boolean) {
+    const pickOne = Math.floor(Math.random() * (this.keys.length - 1));
     const exclude = onlyNow ? '&exclude=hourly,daily,minutely,alerts,flags' : '&exclude=minutely,alerts,flags';
-    return this.http.get<any[]>(this.corsProxy + this.apiURL + this.key + '/' + lat + ',' + lon + '?' + this.lang + exclude);
+    return this.http.get<any[]>(this.corsProxy + this.apiURL + this.keys[pickOne] + '/' + lat + ',' + lon + '?' + this.lang + exclude);
   }
 
 

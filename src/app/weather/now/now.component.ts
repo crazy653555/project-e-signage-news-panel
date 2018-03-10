@@ -13,21 +13,12 @@ export class NowComponent implements OnInit, AfterViewInit {
   // 取得資訊的放置處
   @Input() data;
 
-  // 天氣圖樣式設定
-  icon_id = 'icon_now';
-  icon_width = '150';
-  icon_height = '150';
-  icon_color = 'white';
-  icon_name = 'Partly Cloudy';
-
   constructor(private ws: WeatherService) { }
 
-  ngOnInit() {
-    this.icon_name = this.data.icon;
-  }
+  ngOnInit() { }
 
   ngAfterViewInit() {
-    this.ws.setSkycons(this.icon_id, this.icon_name, this.icon_color);
+    // this.ws.setSkycons(this.icon_id, this.icon_name, this.icon_color);
   }
 
 

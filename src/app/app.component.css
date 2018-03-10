@@ -3,8 +3,7 @@
 .main {
   position: relative;
   height: 100%;
-  background: #232526;
-  background: linear-gradient(to bottom, #64b3f4, #c2e59c);
+  background: rgb(184, 201, 222);
 }
 
 /* 置底，高度由內容決定 */

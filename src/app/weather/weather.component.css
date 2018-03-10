@@ -1,13 +1,13 @@
 
 /* 主框架 */
 .w_framework {
-  margin: 0 auto;
-  max-width: 460px;
+  margin: 1rem auto;
+  max-width: 350px;
 }
 
 /* 子模組 */
 .w_each {
-  margin-top: 1rem;
+  margin: 0 auto;
 }
 
 /* 總評 */

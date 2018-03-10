@@ -17,3 +17,19 @@
   background: #eee !important;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.8) !important;
 }
+
+@media only screen and (min-width: 361px) {
+  .your-clock {
+    transform: scale(1.2);
+  }
+  /* 因應 scale 調整對折線效果 */
+  
+  :host /deep/ .flip-clock-wrapper ul {
+    background: rgba(0, 0, 0, 0.7);
+  }
+  
+  :host /deep/ .flip-clock-wrapper ul li a div.down {
+    bottom: -1px;
+  }
+}
+
